@@ -3,7 +3,6 @@ import logging
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
-
 from settings import settings
 
 metadata = sqlalchemy.MetaData()

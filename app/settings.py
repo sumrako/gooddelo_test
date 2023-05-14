@@ -8,6 +8,9 @@ class Settings(BaseSettings):
     DB_URL: str
     ALLOWED_HOST: str
     ALLOWED_PORT: int
+    SECRET_KEY: str
+    ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
     class Config:
         env_file = '.env'
