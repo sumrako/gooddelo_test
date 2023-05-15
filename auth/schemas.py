@@ -15,10 +15,6 @@ class TaskUpdate(BaseModel):
     title: str
 
 
-class TaskList(BaseModel):
-    tasks: List[Task]
-
-
 class TaskCreate(TaskUpdate):
     title: str
     user_id: int
