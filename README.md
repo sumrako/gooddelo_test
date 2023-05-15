@@ -36,7 +36,7 @@
    ```sh
   python main.py
    ```
-
+Перейдите по ссылке /docs для получения Swagger документации
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
