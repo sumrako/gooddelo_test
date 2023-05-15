@@ -3,9 +3,7 @@ import datetime
 from sqlalchemy.types import TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from app.db import Base
 
 
 class User(Base):
@@ -16,7 +14,8 @@ class User(Base):
     hashed_password = Column(String, nullable=False, index=True)
     is_active = Column(Boolean, nullable=False, index=True, default=True)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=datetime.datetime.utcnow())
-    updated_at = Column(TIMESTAMP(timezone=True), nullable=False, default=datetime.datetime.utcnow())
+    updated_at = Column(TIMESTAMP(timezone=True), nullable=False, onupdate=datetime.datetime.utcnow(),
+                        default=datetime.datetime.utcnow())
 
     tasks = relationship("Task", back_populates="user")
 
@@ -28,6 +27,7 @@ class Task(Base):
     title = Column(String, nullable=False, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, default=datetime.datetime.utcnow())
-    updated_at = Column(TIMESTAMP(timezone=True), nullable=False, default=datetime.datetime.utcnow())
+    updated_at = Column(TIMESTAMP(timezone=True), nullable=False, onupdate=datetime.datetime.utcnow(),
+                        default=datetime.datetime.utcnow())
 
     user = relationship("User", back_populates="tasks")

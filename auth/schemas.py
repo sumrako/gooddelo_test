@@ -1,16 +1,25 @@
 from pydantic import BaseModel
-from typing import Union
+from typing import Union, List
 
 
 class Task(BaseModel):
     id: int
-    owner_id: int
+    title: str
+    user_id: int
 
     class Config:
         orm_mode = True
 
 
-class TaskCreate(BaseModel):
+class TaskUpdate(BaseModel):
+    title: str
+
+
+class TaskList(BaseModel):
+    tasks: List[Task]
+
+
+class TaskCreate(TaskUpdate):
     title: str
     user_id: int
 
@@ -34,6 +43,3 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
-
-class TokenData(BaseModel):
-    username: Union[str, None] = None

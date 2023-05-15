@@ -15,6 +15,9 @@ SQLAlchemy = "1.4.42"
 databases = "^0.7.0"
 passlib = "^1.7.4"
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+redis = "^4.5.5"
+python-multipart = "^0.0.6"
+bcrypt = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 
